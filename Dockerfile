@@ -11,6 +11,7 @@ RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o rbxlabel-web .
 FROM scratch
 WORKDIR /
 COPY --from=builder /go/src/github.com/tomoconnor/rbxlabel-web/rbxlabel-web .
+RUN mkdir uploads
 ENV PORT=7800
 EXPOSE 7800
 ENTRYPOINT ["./rbxlabel-web"]
